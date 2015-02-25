@@ -1,0 +1,205 @@
+$assets-path: ".."
+
+=font($alias, $name)
+	@font-face
+		font-family: $alias
+		src: url("{$assets-path}/fonts/" + $name + ".eot")
+		src: url("{$assets-path}/fonts/" + $name + ".eot?#iefix") format("embedded-opentype"), url("{$assets-path}/fonts/" + $name + ".woff") format("woff"), url("{$assets-path}/fonts/" + $name + ".ttf") format("truetype")
+		font-weight: normal
+		font-style: normal
+
+// Breakpoints
+$wide: 1140px
+$desktop: 960px
+$tablet: 768px
+$mob-wide: 480px
+$mob: 320px
+$wider: 1140px
+
+=r($media)
+	@if $media == wide
+		@media only screen and (max-width: $wide)
+			@content
+	@if $media == desktop
+		@media only screen and (max-width: $desktop)
+			@content
+	@if $media == tablet
+		@media only screen and (max-width: $tablet)
+			@content
+	@if $media == mob-wide
+		@media only screen and (max-width: $mob-wide)
+			@content
+	@if $media == mob
+		@media only screen and (max-width: $mob)
+			@content
+	// @else if $media == wider
+	//   @media only screen and (min-width: $wider)
+	//     @content
+
+=font-smoothing
+	-webkit-font-smoothing: antialiased
+	-moz-osx-font-smoothing: grayscale
+
+=ht
+	text-indent: -9999px
+	overflow: hidden
+
+=clr
+	&:after
+		content: ""
+		display: table
+		clear: both
+
+=trans($what)
+	-moz-transition: $what
+	-o-transition: $what
+	-webkit-transition: $what
+	-ms-transition: $what
+	transition: $what
+
+=cover
+	background-repeat: no-repeat
+	background-size: cover
+	background-position: 50% 50%
+
+=retina
+	@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2)
+		@content
+
+=text-overflow
+	overflow: hidden
+	-ms-text-overflow: ellipsis
+	text-overflow: ellipsis
+	white-space: nowrap
+
+=justify
+	text-align: justify
+	font-size: 0
+	&:after
+		content: ""
+		display: inline-block
+		width: 100%
+		height: 0
+
+=vertical
+	text-align: center
+	font-size: 0
+	&:before
+		content: ""
+		display: inline-block
+		vertical-align: middle
+		width: 0
+		height: 100%
+
+=scrollbar
+	::-webkit-scrollbar
+		@content
+
+=scrollbar-track
+	::-webkit-scrollbar-track
+		@content
+
+=scrollbar-thumb
+	::-webkit-scrollbar-thumb
+		@content
+
+=scrollbar-track-piece
+	::-webkit-scrollbar-track-piece
+		@content
+
+=g($color1, $color2)
+	+background-image(linear-gradient($color1, $color2))
+
+=gh($color1, $color2)
+	+background-image(linear-gradient(left, $color1, $color2))
+
+=font-smoothing
+	-webkit-font-smoothing: antialiased
+	-moz-osx-font-smoothing: grayscale
+
+=gpu
+	transform: translate3d(0, 0, 0)
+
+=arrow($width, $height, $bg, $direction)
+	// e.g.: +arr(500,50, #000, l)
+	width: 0px
+	height: 0px
+	border-style: solid
+	@if $direction == t
+		border-width: 0 $width / 2 + px $height + px $width / 2 + px
+		border-color: transparent transparent $bg transparent
+	@if $direction == r
+		border-width: $height / 2 + px 0 $height / 2 + px $width + px
+		border-color: transparent transparent transparent $bg
+	@if $direction == b
+		border-width: $height + px $width / 2 + px 0 $width / 2 + px
+		border-color: $bg transparent transparent transparent
+	@if $direction == l
+		border-width: $height / 2 + px $width + px $height / 2 + px 0
+		border-color: transparent $bg transparent transparent
+	@if $direction == tl
+		border-width: $height + px $width + px 0 0
+		border-color: $bg transparent transparent transparent
+	@if $direction == tr
+		border-width: 0 $width + px $height + px 0
+		border-color: transparent $bg transparent transparent
+	@if $direction == br
+		border-width: 0 0 $height + px $width + px
+		border-color: transparent transparent $bg transparent
+	@if $direction == bl
+		border-width: $width + px 0 0 $height + px
+		border-color: transparent transparent transparent $bg
+
+=arrow-smoothting
+	-webkit-transform: rotate(0.05deg)
+	-moz-transform: scale(1.1)
+	-o-transform: rotate(0.05deg)
+	transform: rotate(0.05deg)
+
+=placeholder
+	&:-ms-input-placeholder
+		@content
+	&:-moz-placeholder
+		@content
+	&::-moz-placeholder
+		@content
+	&::-webkit-input-placeholder
+		@content
+	&::placeholder
+		@content
+
+=sel
+	& ::selection
+		@content
+	& ::-moz-selection
+		@content
+
+=nosel
+	-webkit-touch-callout: none
+	-webkit-user-select: none
+	-khtml-user-select: none
+	-moz-user-select: none
+	-ms-user-select: none
+	user-select: none
+
+=prevent-text
+	-ms-word-break: break-all
+	word-break: break-all
+	word-break: break-word
+	-webkit-hyphens: auto
+	-moz-hyphens: auto
+	hyphens: auto
+
+=rotate($var)
+	-ms-transform: rotate($var)
+	-webkit-transform: rotate($var)
+	transform: rotate($var)
+
+=blur($var)
+	-webkit-filter: blur($var)
+	filter: blur($var)
+
+=scale($var)
+	-ms-transform: scale($var)
+	-webkit-transform: scale($var)
+	transform: scale($var)

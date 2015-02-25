@@ -1,38 +1,35 @@
-require 'autoprefixer-rails'
-# require 'compass/import-once/activate'
 # Require any additional compass plugins here.
 
 # Set this to the root of your project when deployed:
 http_path = "/"
+css_dir = "css"
+sass_dir = "sass"
+images_dir = "img"
+javascripts_dir = "js"
 
-css_dir = "assets/css"
-sass_dir = "assets/sass"
-images_dir = "assets/img"
-javascripts_dir = "assets/js"
-fonts_dir = "assets/fonts"
 
-# environment = :development
-
-# :nested, :expanded, :compact, :compressed
+# :expanded, :nested, :compact, :compressed
 output_style = :expanded
-
 
 # To enable relative paths to assets via compass helper functions. Uncomment:
 relative_assets = true
 
+# To disable debugging comments that display the original location of your selectors. Uncomment:
 line_comments = false
-color_output = false
 
 preferred_syntax = :sass
 
 
-on_stylesheet_saved do |file|
-	css = File.read(file)
-	File.open(file, 'w') do |io|
-		io << AutoprefixerRails.process(css, browsers: ['ie >= 9', 'ie_mob >= 10', 'ff >= 30', 'chrome >= 34', 'safari >= 7', 'opera >= 23', 'ios >= 7', 'android >= 4.4', 'bb >= 10'])
-	end
-end
-
+# ===================
+# Autoprefixer
+# require 'autoprefixer-rails'
+# ===================
+# on_stylesheet_saved do |file|
+# 	css = File.read(file)
+# 	File.open(file, 'w') do |io|
+# 		io << AutoprefixerRails.process(css, browsers: ['ie >= 9', 'ie_mob >= 10', 'ff >= 30', 'chrome >= 34', 'safari >= 7', 'opera >= 23', 'ios >= 7', 'android >= 4.4', 'bb >= 10'])
+# 	end
+# end
 
 # ===================
 # Uncomment this part to make sprite name static, icons-123asda.png -> icons.png
