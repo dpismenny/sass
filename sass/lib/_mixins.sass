@@ -3,38 +3,10 @@ $assets-path: ".."
 =font($alias, $name)
 	@font-face
 		font-family: $alias
-		src: url("{$assets-path}/fonts/" + $name + ".eot")
-		src: url("{$assets-path}/fonts/" + $name + ".eot?#iefix") format("embedded-opentype"), url("{$assets-path}/fonts/" + $name + ".woff") format("woff"), url("{$assets-path}/fonts/" + $name + ".ttf") format("truetype")
+		src: url("#{$assets-path}/fonts/" + $name + ".eot")
+		src: url("#{$assets-path}/fonts/" + $name + ".eot?#iefix") format("embedded-opentype"), url("#{$assets-path}/fonts/" + $name + ".woff") format("woff"), url("#{$assets-path}/fonts/" + $name + ".ttf") format("truetype")
 		font-weight: normal
 		font-style: normal
-
-// Breakpoints
-$wide: 1140px
-$desktop: 960px
-$tablet: 768px
-$mob-wide: 480px
-$mob: 320px
-$wider: 1140px
-
-=r($media)
-	@if $media == wide
-		@media only screen and (max-width: $wide)
-			@content
-	@if $media == desktop
-		@media only screen and (max-width: $desktop)
-			@content
-	@if $media == tablet
-		@media only screen and (max-width: $tablet)
-			@content
-	@if $media == mob-wide
-		@media only screen and (max-width: $mob-wide)
-			@content
-	@if $media == mob
-		@media only screen and (max-width: $mob)
-			@content
-	// @else if $media == wider
-	//   @media only screen and (min-width: $wider)
-	//     @content
 
 =font-smoothing
 	-webkit-font-smoothing: antialiased
@@ -50,7 +22,7 @@ $wider: 1140px
 		display: table
 		clear: both
 
-=trans($what)
+=tr($what)
 	-moz-transition: $what
 	-o-transition: $what
 	-webkit-transition: $what
